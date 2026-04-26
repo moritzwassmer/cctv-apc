@@ -1,0 +1,3 @@
+_target_: napc.callbacks.CSV_log_pred_cctv
+metadata_path: ${run.dm.napci_path} #/net/vericon/napc_data/2d_data/avi_passenger.csv
+output_path: ${oc.env:RUN_OUT}/predictions.csv

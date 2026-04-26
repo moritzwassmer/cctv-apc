@@ -1,0 +1,13 @@
+_target_: pytorch_lightning.loggers.mlflow.MLFlowLogger
+defaults:
+  - _self_
+experiment_name: ${now:%Y-%m-%d_%H-%M-%S}  # The name of the experiment, overridden later on
+run_name: null  # Name of the new run
+tracking_uri: https://dagshub.com/dagshub.frisbee891/thesis.mlflow # file:/work/wassmer/napc_xlstm/output/mlflow  # Address of local or remote tracking server
+tags: {}  # A dictionary of tags for the experiment
+#save_dir: null #'./mlruns'  # A path to a local directory where the MLflow runs get saved, ignored with trackinguri
+log_model: false #true  # Options: true, false, 'all', true didnt work with multiple checkpoint callbacks in my experiments
+prefix: ''  # A string to put at the beginning of metric keys
+artifact_location: null  # The location to store run artifacts
+run_id: null  # The run identifier of the experiment
+synchronous: False  # Hints mlflow whether to block the execution for every logging call until complete

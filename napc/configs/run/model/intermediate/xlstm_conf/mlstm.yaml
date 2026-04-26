@@ -1,0 +1,7 @@
+_target_: xlstm.xLSTMBlockStackConfig
+defaults:
+- mlstm_block: default
+context_length: ${run.context_length}
+num_blocks: 7
+embedding_dim: -1
+dropout: 0.2 # not original

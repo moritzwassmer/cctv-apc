@@ -1,0 +1,3 @@
+defaults:
+- _dataset_settings.yaml
+hdf5_path: /net/vericon/napc_data/cctv/data_vd2_cut.hdf5

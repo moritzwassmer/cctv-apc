@@ -1,0 +1,16 @@
+_target_: xlstm.mLSTMBlockConfig
+mlstm:
+  _target_:  xlstm.mLSTMLayerConfig
+  conv1d_kernel_size: 4
+  qkv_proj_blocksize: 4 
+  num_heads: 4
+  proj_factor: 2.0
+
+  # will be set toplevel config
+  embedding_dim:  -1
+  bias: False
+  dropout: ${run.model.intermediate.config.dropout}
+  context_length: -1
+
+  _num_blocks:  1
+  _inner_embedding_dim: None

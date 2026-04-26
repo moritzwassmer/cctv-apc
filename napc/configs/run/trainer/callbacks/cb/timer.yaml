@@ -1,0 +1,7 @@
+_target_: pytorch_lightning.callbacks.Timer
+defaults:
+  - _self_
+
+duration: "99:00:00:00"  # A string in the format DD:HH:MM:SS, or a datetime.timedelta, or a dict compatible with timedelta
+interval: 'step'  # Options: 'epoch', 'step'
+verbose: true  # Set this to False to suppress logging messages

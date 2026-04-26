@@ -1,0 +1,6 @@
+batch_size: 32
+random_seed: 0
+ttdv_ratio: "0.2:0.6:0.0:0.2"
+train_fraction: 1.0
+max_framenum: ${run.context_length}
+napci_path_test: null

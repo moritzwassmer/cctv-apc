@@ -1,0 +1,11 @@
+_target_: napc.hydra_utils.extract_values
+defaults:
+- cb@timer: timer
+- cb@lg_sys: log_sys_metrics
+- cb@csv: log_csv_on_test
+- cb@timer: timer
+- cb@shuffle: shuffle_train
+- cb@lg_bs: log_bs
+- cb@time_tracker: time_tracker
+- cb@num_params: num_params
+- cb@debug_lr: debug_lr

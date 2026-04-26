@@ -1,0 +1,4 @@
+defaults:
+- conv_baseline
+use_batchnorm: false
+use_groupnorm: true

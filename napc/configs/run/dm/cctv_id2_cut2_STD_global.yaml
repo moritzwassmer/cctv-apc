@@ -1,0 +1,11 @@
+defaults:
+- cctv_id2_cut2
+train_ds_conf:
+  mean: null
+  std: null
+test_ds_conf:
+  mean: null
+  std: null
+val_ds_conf:
+  mean: null
+  std: null

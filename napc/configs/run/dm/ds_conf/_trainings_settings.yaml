@@ -1,0 +1,7 @@
+prob_time_reverse: 0
+prob_mirror: 0.5
+concat: 2
+bounding_box_extend : 0.25 #0.2
+do_cut: true
+ext_up_bb: 0
+ext_low_bb: 0

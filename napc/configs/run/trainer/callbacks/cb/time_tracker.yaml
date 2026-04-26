@@ -1,0 +1,2 @@
+_target_: napc.callbacks.TrainingTimeTrackerCallback
+reset_first_n_epochs: 0

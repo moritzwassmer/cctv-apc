@@ -1,0 +1,7 @@
+_target_: pytorch_lightning.callbacks.OnExceptionCheckpoint
+defaults:
+  - _self_
+
+
+dirpath: '/work/wassmer/napc_xlstm/output/exception_cp'  # Directory to save the checkpoint file
+filename: 'model_checkpoint'  # Checkpoint filename without the extension

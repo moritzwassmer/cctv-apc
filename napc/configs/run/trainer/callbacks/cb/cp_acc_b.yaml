@@ -1,0 +1,6 @@
+_target_: pytorch_lightning.callbacks.ModelCheckpoint
+dirpath: ${oc.env:RUN_OUT}/checkpoints
+monitor: val_Acc_b
+filename: val_Acc_b #best-{epoch}-{val_avg_Acc:.4f}
+save_top_k: 1
+mode: 'max'

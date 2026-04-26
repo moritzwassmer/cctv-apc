@@ -1,0 +1,4 @@
+_target_: napc.losses.BoundOnlyLoss
+balanced: False
+squared: true
+squared_scale: 1.0

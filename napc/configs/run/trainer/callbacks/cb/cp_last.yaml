@@ -1,0 +1,8 @@
+_target_: pytorch_lightning.callbacks.ModelCheckpoint
+dirpath: ${oc.env:RUN_OUT}/checkpoints
+filename: 'last'               # Filename (without extension, .ckpt is auto-added)
+save_top_k: 1                 # Keep only one checkpoint
+save_last: true           # Save the last checkpoint
+every_n_epochs: 1            # Save at every epoch
+save_weights_only: false       # Save model weights and optimizer states
+enable_version_counter: false

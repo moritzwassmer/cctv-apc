@@ -1,0 +1,43 @@
+_target_: pytorch_lightning.Trainer
+defaults:
+  - _self_
+  - callbacks: cp-last-Acc_es
+  - logger: mlflogger_basic
+  - profiler: simple_profiler  # Profiler instance or string
+
+accelerator: 'auto'  # Options: 'cpu', 'gpu', 'tpu', 'ipu', 'auto'
+strategy: 'auto'  # Options: 'ddp', 'ddp_spawn', 'dp', 'ddp_sharded', 'ddp_sharded_spawn', 'deepspeed', 'horovod', 'fsdp', 'single_device', 'auto'
+devices: 'auto'  # Can be a list of integers or a string specifying devices to use
+#num_nodes: 1  # Number of nodes to use for distributed training
+precision: "16-mixed"  # Options: 16, 32, 64, 'bf16', 'mixed'
+fast_dev_run: false  # Runs n if set to n, runs 1 if set to True
+max_epochs: 1000 # Max number of epochs to train
+min_epochs: null  # Min number of epochs to train
+#max_steps: -1  # Max number of steps to train
+min_steps: null  # Min number of steps to train
+#max_time: "04:23:30:00"  #  DD:HH:MM:SS Max time to train (e.g. '00:01:00')
+limit_train_batches: null  # Percent of training batches to use or an int
+limit_val_batches: null  # Percent of validation batches to use or an int
+limit_test_batches: null  # Percent of test batches to use or an int
+limit_predict_batches: null  # Percent of predict batches to use or an int
+overfit_batches: 0.0  # Percent of training data to use for overfitting
+val_check_interval: null  # Percent of epoch or int to check validation
+check_val_every_n_epoch: 5  # Check val every n epochs
+num_sanity_val_steps: null  # Number of steps to run sanity val
+log_every_n_steps: 200  # Log every n steps
+enable_checkpointing: True  # Enable model checkpointing
+enable_progress_bar: False  # Enable progress bar
+enable_model_summary: True  # Enable model summary
+accumulate_grad_batches: 1  # Accumulate grad batches
+gradient_clip_val: null  # Clip gradients
+gradient_clip_algorithm: null  # Algorithm to clip gradients
+deterministic: null  # Use deterministic algorithms
+benchmark: null  # Use cuDNN benchmark
+inference_mode: true  # Use inference mode for predict/eval
+use_distributed_sampler: true  # Use distributed sampler
+detect_anomaly: false  # Detect anomaly
+barebones: false  # Use barebones setup
+plugins: null  # Plugins for Trainer
+sync_batchnorm: false  # Synchronize batchnorm
+reload_dataloaders_every_n_epochs: 0  # Reload dataloaders every n epochs
+default_root_dir: null  # Default root dir for logs and checkpoints

@@ -1,0 +1,3 @@
+_target_: napc.model.DenseOutput
+embedding_dim: 128
+output_dim: ${run.model.output_dimensions}

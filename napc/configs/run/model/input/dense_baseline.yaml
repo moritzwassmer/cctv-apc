@@ -1,0 +1,3 @@
+_target_: napc.model.DenseInput
+input_dimensions: ${run.model.input_dimensions}
+embedding_dim: -1

@@ -1,0 +1,5 @@
+_target_: pytorch_lightning.callbacks.DeviceStatsMonitor
+defaults:
+  - _self_
+
+cpu_stats: null  # Options: null, true, false. If null, logs CPU stats only if the accelerator is CPU. If true, logs CPU stats regardless of the accelerator. If false, does not log CPU stats regardless of the accelerator.

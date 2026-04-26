@@ -1,0 +1,12 @@
+lr: 0.001
+min_lr: 0.0001
+output_dimensions: -1 # this has to be replaced during runtime, after instantiating the datamodule
+input_dimensions: -1 # this has to be replaced during runtime, after instantiating the datamodule
+_convert_: all
+optimizer: Adam
+lr_scheduler: null # null or beck24
+weight_decay: 0.1
+warmup_steps: 20000
+decay_until_step: 200000
+defaults:
+- loss: boundsonly

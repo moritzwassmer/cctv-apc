@@ -1,0 +1,47 @@
+_target_: napc.model.ConvInput
+_convert_: all
+
+input_dimensions: ${run.model.input_dimensions}
+embedding_dim: -1
+
+conv_filters: [4, 8, 16, 32]
+
+conv_kernel: 
+  - [1, 2, 2]
+  - [1, 2, 2]
+  - [1, 2, 2]
+  - [1, 2, 4]  # Final layer to reduce to (1,1)
+
+conv_pad: 
+  - [0, 0, 0]
+  - [0, 0, 0]
+  - [0, 0, 0]
+  - [0, 0, 0]
+
+conv_stride: 
+  - [1, 1, 1]
+  - [1, 1, 1]
+  - [1, 1, 1]
+  - [1, 1, 1]
+
+pool_kernel: 
+  - [1, 2, 2]
+  - [1, 2, 2]
+  - [1, 2, 2]
+  - [1, 1, 1]  # No pooling on the final layer
+
+pool_stride: 
+  - [1, 2, 2]
+  - [1, 2, 2]
+  - [1, 2, 2]
+  - [1, 1, 1]
+
+pool_pad: 
+  - [0, 0, 0]
+  - [0, 0, 0]
+  - [0, 0, 0]
+  - [0, 0, 0]
+
+conv_pool_layer: 4
+
+use_batchnorm: true

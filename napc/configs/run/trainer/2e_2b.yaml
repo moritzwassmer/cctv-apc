@@ -1,0 +1,15 @@
+_target_: pytorch_lightning.Trainer
+max_epochs: 2  # Max number of epochs to train
+limit_train_batches: 2  # Percent of training batches to use or an int
+limit_val_batches: 2  # Percent of validation batches to use or an int
+limit_test_batches: 2  # Percent of test batches to use or an int
+enable_checkpointing: True  # Enable model checkpointing
+enable_progress_bar: True  # Enable progress bar
+enable_model_summary: True  # Enable model summary
+gradient_clip_val: 1
+
+defaults:
+  - _self_
+  - callbacks: cp-last-Acc_es
+  - logger: mlflogger_basic
+  - profiler: simple_profiler  # Profiler instance or string

@@ -1,0 +1,4 @@
+defaults:
+- full_run
+- override trainer: 2e_2b
+- override dm: cctv_vd2_cut2

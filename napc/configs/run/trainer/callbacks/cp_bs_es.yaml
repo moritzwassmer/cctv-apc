@@ -1,0 +1,4 @@
+_target_: napc.hydra_utils.extract_values
+defaults:
+- cp_es
+- cb@bs_finder: bs_finder

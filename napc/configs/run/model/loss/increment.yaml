@@ -1,0 +1,6 @@
+_target_: napc.losses.IncrementBoundsOnlyLoss
+squared: False
+punish_corrections: False
+scale: 100
+over_w: 1.0
+under_w: 1.0

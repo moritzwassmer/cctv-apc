@@ -1,0 +1,5 @@
+_target_: napc.model.R2Plus1DNet
+_convert_: all
+num_blocks: 8 
+base_channels: 8
+stride_every: 2

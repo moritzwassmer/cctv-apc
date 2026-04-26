@@ -1,0 +1,9 @@
+_target_: pytorch_lightning.callbacks.BatchSizeFinder
+defaults:
+  - _self_
+
+mode: 'power'  # Options: 'power', 'binsearch'
+steps_per_trial: 15  # Number of steps to run with a given batch size
+init_val: 8  # Initial batch size to start the search with
+max_trials: 10  # Max number of increases in batch size before termination
+batch_arg_name: 'batch_size'  # Name of the attribute that stores the batch size

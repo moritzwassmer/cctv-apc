@@ -1,0 +1,13 @@
+_target_: pytorch_lightning.callbacks.LearningRateFinder
+defaults:
+  - _self_
+# The LR finder doesn't work with confusion matrix based metrics. exclude them if you want to use it.
+
+
+min_lr: 1e-4  # Minimum learning rate to investigate
+max_lr: 5e-1  # Maximum learning rate to investigate
+num_training_steps: 100  # Number of learning rates to test
+mode: 'linear'  # Options: 'exponential', 'linear'
+early_stop_threshold: null  # Threshold for stopping the search
+update_attr: true  # Whether to update the learning rate attribute or not
+attr_name: 'lr'  # Name of the attribute which stores the learning rate

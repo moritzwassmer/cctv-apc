@@ -1,0 +1,16 @@
+_target_: napc.model.NAPC
+defaults:
+- base_model
+- input: conv_baseline
+- intermediate: mlstm
+- output: dense
+
+# Overwrite the embedding_dim for all components
+input:
+  embedding_dim: 128
+intermediate:
+  config:
+    embedding_dim: 128
+    num_blocks: 6
+output:
+  embedding_dim: 128

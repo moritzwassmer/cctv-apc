@@ -1,0 +1,10 @@
+_target_: napc.hydra_utils.extract_values
+defaults:
+- es
+- cb@cp_last: cp_last
+- cb@cp_acc: cp_acc
+- cb@cp_acc_a: cp_acc_a
+- cb@cp_acc_b: cp_acc_b
+- cb@abs_grb: cp_abs_grb
+- cb@cp_abs_grb_a: cp_abs_grb_a
+- cb@cp_abs_grb_b: cp_abs_grb_b

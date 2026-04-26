@@ -1,0 +1,7 @@
+_target_: napc.cctv_dataset.DataModule
+defaults:
+- ds_conf@train_ds_conf: cctv_data_id2_cut_train
+- ds_conf@test_ds_conf: cctv_data_id2_cut
+- ds_conf@val_ds_conf: cctv_data_id2_cut
+- _datamodule_settings
+napci_path: /net/vericon/napc_data/cctv/cctv_passenger_bb_sel_700_200_50.csv

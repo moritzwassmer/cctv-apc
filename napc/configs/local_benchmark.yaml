@@ -1,0 +1,15 @@
+defaults:
+- run: test_run
+- override hydra/launcher: submitit_local #hydra/launcher=submitit_local submitit_slurm
+
+
+hydra: 
+  run:
+    dir: ./hydra
+  sweep:
+    dir: ./hydra
+  launcher:
+    # @package hydra.launcher
+    _target_: hydra_plugins.hydra_submitit_launcher.submitit_launcher.LocalLauncher
+    submitit_folder: ${hydra.sweep.dir}/.submitit/%j
+    tasks_per_node: 1

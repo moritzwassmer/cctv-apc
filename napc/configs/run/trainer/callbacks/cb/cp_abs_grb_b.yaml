@@ -1,0 +1,6 @@
+_target_: pytorch_lightning.callbacks.ModelCheckpoint
+dirpath: ${oc.env:RUN_OUT}/checkpoints
+monitor: val_abs_grb_b
+filename: val_abs_grb_b
+save_top_k: 1
+mode: 'min'

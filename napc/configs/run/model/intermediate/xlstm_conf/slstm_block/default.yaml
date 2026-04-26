@@ -1,0 +1,16 @@
+_target_: xlstm.sLSTMBlockConfig
+defaults:
+- slstm: slstm 
+
+
+feedforward:
+  _target_: xlstm.FeedForwardConfig
+  proj_factor: 1.3
+  act_fn: "gelu"
+  embedding_dim: -1
+  dropout: ${run.model.intermediate.config.dropout}
+  bias: False
+  ff_type: "ffn_gated"
+
+_num_blocks: 1
+_block_idx: 0

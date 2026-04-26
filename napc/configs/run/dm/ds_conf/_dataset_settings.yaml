@@ -1,0 +1,20 @@
+
+_target_: napc.cctv_dataset.DatasetConfig
+context_length: ${run.context_length}
+padding_value: 0
+concat: 1
+prob_time_reverse: 0
+prob_mirror: 0
+bounding_box_extend : 0.0 #0.2
+do_pad_to_max: false
+do_trunc_max: true
+mean: 0
+std: 255
+
+collate_fn: 'collate_pad'
+pin_memory: true
+num_workers: 4
+shuffle: false
+do_cut: false
+ext_up_bb: 0
+ext_low_bb: 0

@@ -1,0 +1,9 @@
+  _target_: xlstm.sLSTMLayerConfig
+  defaults:
+  - backend@_here_: vanilla
+  embedding_dim: -1
+  num_heads: 4 # this must divide the hidden size, is not yet supported by all versions in this directory
+  conv1d_kernel_size: 4  # 0 means no convolution included
+  group_norm_weight: True
+  dropout: ${run.model.intermediate.config.dropout}
+  bias_init: "powerlaw_blockdependent"

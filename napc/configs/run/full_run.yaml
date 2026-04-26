@@ -1,0 +1,11 @@
+#_target_: run.Run
+defaults:
+- dm: cctv_vd2_cut2_STD_global
+- model: conv_lstm_2x64
+- trainer: full
+context_length: 1260 # set longest possible sequence length
+mode: train_test
+ckpt_path: ${oc.env:RUN_OUT}/checkpoints/val_avg_Acc.ckpt #ckpt_path: ./model/checkpoints/best_val_avg_BA/best_val_avg_BA.ckpt
+skip_meta: false
+do_compile: false
+mlflow_creds: /work/wassmer/napc_xlstm/mlflow_creds/bottleneck.cactus730-experimental.yaml

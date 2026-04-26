@@ -1,0 +1,23 @@
+_target_: napc.model.BN_NAPC
+defaults:
+- base_model
+- input: r2plus1d
+- intermediate: mlstm
+- output: decoder
+
+# Overwrite the embedding_dim for all components
+input:
+  embedding_dim: 128
+  base_channels: 8
+  num_blocks: 8
+  input_shape:
+  - 1
+  - 1215
+  - 40
+  - 40
+intermediate:
+  config:
+    embedding_dim: 128
+    num_blocks: 2
+#output:
+#  embedding_dim: 128

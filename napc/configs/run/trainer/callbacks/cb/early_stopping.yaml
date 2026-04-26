@@ -1,0 +1,16 @@
+_target_: pytorch_lightning.callbacks.EarlyStopping
+defaults:
+  - _self_
+
+
+monitor: val_avg_Acc #'val_avg_MAE'  # Quantity to be monitored
+min_delta: 0.005  # Minimum change in the monitored quantity to qualify as an improvement
+patience: 100  # Number of checks with no improvement after which training will be stopped
+verbose: true  # Verbosity mode
+mode: 'max'  # Options: 'min', 'max'
+strict: true  # Whether to crash the training if monitor is not found
+check_finite: true  # Stops training when the monitor becomes NaN or infinite
+stopping_threshold: null  # Stop training immediately once the monitored quantity reaches this threshold
+divergence_threshold: null  # Stop training as soon as the monitored quantity becomes worse than this threshold
+check_on_train_epoch_end: null  # Whether to run early stopping at the end of the training epoch
+log_rank_zero_only: true  # Logs the status of the early stopping callback only for rank 0 process

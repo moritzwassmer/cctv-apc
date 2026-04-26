@@ -1,0 +1,2 @@
+_target_: napc.model.InterpolateOutput
+embedding_dim: 128

@@ -1,0 +1,4 @@
+_target_: napc.model.DeconvOutput
+embedding_dim: 128
+output_dim: ${run.model.output_dimensions}
+num_layers: 2

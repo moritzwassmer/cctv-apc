@@ -1,0 +1,279 @@
+dm:
+  train_ds_conf:
+    _target_: napc.cctv_dataset.DatasetConfig
+    context_length: 1260
+    padding_value: 0
+    concat: 2
+    prob_time_reverse: 0
+    prob_mirror: 0.5
+    bounding_box_extend: 0.25
+    do_pad_to_max: false
+    do_trunc_max: true
+    standardize: global
+    collate_fn: collate_pad
+    pin_memory: true
+    num_workers: 4
+    shuffle: false
+    do_cut: true
+    ext_up_bb: 0
+    ext_low_bb: 0
+    hdf5_path: /net/vericon/napc_data/cctv/data_vd2_cut2.hdf5
+  test_ds_conf:
+    _target_: napc.cctv_dataset.DatasetConfig
+    context_length: 1260
+    padding_value: 0
+    concat: 1
+    prob_time_reverse: 0
+    prob_mirror: 0
+    bounding_box_extend: 0.0
+    do_pad_to_max: false
+    do_trunc_max: true
+    standardize: global
+    collate_fn: collate_pad
+    pin_memory: true
+    num_workers: 4
+    shuffle: false
+    do_cut: false
+    ext_up_bb: 0
+    ext_low_bb: 0
+    hdf5_path: /net/vericon/napc_data/cctv/data_vd2_cut2.hdf5
+  val_ds_conf:
+    _target_: napc.cctv_dataset.DatasetConfig
+    context_length: 1260
+    padding_value: 0
+    concat: 1
+    prob_time_reverse: 0
+    prob_mirror: 0
+    bounding_box_extend: 0.0
+    do_pad_to_max: false
+    do_trunc_max: true
+    standardize: global
+    collate_fn: collate_pad
+    pin_memory: true
+    num_workers: 4
+    shuffle: false
+    do_cut: false
+    ext_up_bb: 0
+    ext_low_bb: 0
+    hdf5_path: /net/vericon/napc_data/cctv/data_vd2_cut2.hdf5
+  batch_size: 8
+  random_seed: 1
+  ttdv_ratio: 0.2:0.6:0.0:0.2
+  train_fraction: 1.0
+  max_framenum: 1260
+  _target_: napc.cctv_dataset.DataModule
+  napci_path: /net/vericon/napc_data/cctv/cctv_passenger_bb_sel_350_100_25_2.csv
+model:
+  loss:
+    _target_: napc.losses.BoundOnlyLoss
+    output_dimensions: 2
+    balanced: false
+    squared: false
+  lr: 0.001
+  min_lr: 0.0001
+  output_dimensions: 2
+  input_dimensions:
+  - 40
+  - 40
+  _convert_: all
+  optimizer: Adam
+  lr_scheduler: null
+  weight_decay: 0.1
+  warmup_steps: 20000
+  decay_until_step: 200000
+  input:
+    _target_: napc.model.ConvInput
+    _convert_: all
+    input_dimensions:
+    - 40
+    - 40
+    embedding_dim: 128
+    conv_filters:
+    - 8
+    - 16
+    - 32
+    conv_kernel:
+    - - 1
+      - 2
+      - 2
+    - - 1
+      - 2
+      - 2
+    - - 1
+      - 2
+      - 2
+    conv_pad:
+    - - 0
+      - 1
+      - 1
+    - - 0
+      - 1
+      - 1
+    - - 0
+      - 1
+      - 1
+    conv_stride:
+    - - 1
+      - 1
+      - 1
+    - - 1
+      - 1
+      - 1
+    - - 1
+      - 1
+      - 1
+    pool_kernel:
+    - - 1
+      - 2
+      - 2
+    - - 1
+      - 2
+      - 2
+    - - 1
+      - 2
+      - 2
+    pool_stride:
+    - - 1
+      - 2
+      - 2
+    - - 1
+      - 2
+      - 2
+    - - 1
+      - 2
+      - 2
+    pool_pad:
+    - - 0
+      - 0
+      - 0
+    - - 0
+      - 0
+      - 0
+    - - 0
+      - 0
+      - 0
+    conv_pool_layer: 3
+    use_batchnorm: true
+    use_groupnorm: false
+  output:
+    _target_: napc.model.DenseOutput
+    embedding_dim: 128
+    output_dim: 2
+  _target_: napc.model.NAPC
+  intermediate:
+    _target_: napc.model.LSTMModuleFast
+    num_layers: 2
+    embedding_dim: 128
+    input_dim: 128
+    dropout_rate: 0.2
+trainer:
+  _target_: pytorch_lightning.Trainer
+  accelerator: auto
+  strategy: auto
+  devices: auto
+  precision: 16-mixed
+  fast_dev_run: false
+  max_epochs: 10
+  min_epochs: null
+  min_steps: null
+  limit_train_batches: 2
+  limit_val_batches: 1
+  limit_test_batches: 1
+  limit_predict_batches: null
+  overfit_batches: 0.0
+  val_check_interval: null
+  check_val_every_n_epoch: 5
+  num_sanity_val_steps: null
+  log_every_n_steps: 200
+  enable_checkpointing: true
+  enable_progress_bar: false
+  enable_model_summary: true
+  accumulate_grad_batches: 1
+  gradient_clip_val: null
+  gradient_clip_algorithm: null
+  deterministic: null
+  benchmark: null
+  inference_mode: true
+  use_distributed_sampler: true
+  detect_anomaly: false
+  barebones: false
+  plugins: null
+  sync_batchnorm: false
+  reload_dataloaders_every_n_epochs: 0
+  default_root_dir: null
+  callbacks:
+    timer:
+      _target_: pytorch_lightning.callbacks.Timer
+      duration: '99:00:00:00'
+      interval: step
+      verbose: true
+    lg_sys:
+      _target_: napc.callbacks.SystemMetricsLogger
+    csv:
+      _target_: napc.callbacks.CSV_log_pred_cctv
+      metadata_path: /net/vericon/napc_data/cctv/cctv_passenger_bb_sel_350_100_25_2.csv
+      output_path: /net/work/wassmer/exec/2026-01-25-15-33-07_test/out/7a90c91f3ac54bdda1b9e884342bc28c/predictions.csv
+    shuffle:
+      _target_: napc.callbacks.ShuffleCallback
+    lg_bs:
+      _target_: napc.callbacks.LogBatchSizeCallback
+    time_tracker:
+      _target_: napc.callbacks.TrainingTimeTrackerCallback
+      reset_first_n_epochs: 0
+    num_params:
+      _target_: napc.callbacks.NumParamsCallback
+    metrics_logger:
+      _target_: napc.callbacks.MetricLoggerCallback
+    _target_: napc.hydra_utils.extract_values
+    early_stopping:
+      _target_: pytorch_lightning.callbacks.EarlyStopping
+      monitor: val_avg_Acc
+      min_delta: 0.005
+      patience: 100
+      verbose: true
+      mode: max
+      strict: true
+      check_finite: true
+      stopping_threshold: null
+      divergence_threshold: null
+      check_on_train_epoch_end: null
+      log_rank_zero_only: true
+    cp_last:
+      _target_: pytorch_lightning.callbacks.ModelCheckpoint
+      dirpath: /net/work/wassmer/exec/2026-01-25-15-33-07_test/out/7a90c91f3ac54bdda1b9e884342bc28c/checkpoints
+      filename: last
+      save_top_k: 1
+      save_last: true
+      every_n_epochs: 1
+      save_weights_only: false
+      enable_version_counter: false
+    cp_acc:
+      _target_: pytorch_lightning.callbacks.ModelCheckpoint
+      dirpath: /net/work/wassmer/exec/2026-01-25-15-33-07_test/out/7a90c91f3ac54bdda1b9e884342bc28c/checkpoints
+      monitor: val_avg_Acc
+      filename: val_avg_Acc
+      save_top_k: 1
+      mode: max
+  logger:
+    _target_: napc.logger.BatchedMLFlowLogger
+    experiment_name: 2026-01-25-15-33-07_test
+    run_name: null
+    tracking_uri: file:///work/wassmer/outputs/mlflow
+    tags: {}
+    log_model: false
+    prefix: ''
+    artifact_location: null
+    run_id: null
+    synchronous: false
+    log_metrics_every: 200
+  profiler:
+    _target_: pytorch_lightning.profilers.simple.SimpleProfiler
+    dirpath: /net/work/wassmer/exec/2026-01-25-15-33-07_test/out/7a90c91f3ac54bdda1b9e884342bc28c
+    filename: profiler
+    extended: true
+context_length: 1260
+mode: train_test
+ckpt_path: /net/work/wassmer/exec/2026-01-25-15-33-07_test/out/7a90c91f3ac54bdda1b9e884342bc28c/checkpoints/val_avg_Acc.ckpt
+skip_meta: false
+do_compile: false
+mlflow_creds: /work/wassmer/test_env/MSc_NAPC_XLSTM/mlflow_creds/default.yaml

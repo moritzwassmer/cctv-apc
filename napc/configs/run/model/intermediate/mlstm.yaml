@@ -1,0 +1,3 @@
+defaults:
+- xlstm_conf@config: mlstm
+_target_: xlstm.xLSTMBlockStack

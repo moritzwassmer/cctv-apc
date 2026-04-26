@@ -1,0 +1,6 @@
+_target_: pytorch_lightning.profilers.simple.SimpleProfiler
+dirpath: ${oc.env:RUN_OUT}         # Replace with a specific path if needed
+filename: profiler        # Replace with a specific filename if needed
+extended: true        # Set to false if extended profiling is not needed
+defaults:
+  - _self_

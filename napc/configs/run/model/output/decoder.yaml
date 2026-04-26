@@ -1,0 +1,4 @@
+_target_: napc.model.DecoderOutput
+embedding_dim: 128
+hidden_dim: 128
+num_blocks:  3

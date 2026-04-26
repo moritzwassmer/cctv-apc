@@ -1,0 +1,4 @@
+_target_: napc.hydra_utils.extract_values
+defaults:
+- basic
+- cb@cp_last: cp_last

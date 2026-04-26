@@ -1,0 +1,17 @@
+_target_: napc.model.NAPC
+defaults:
+- base_model
+- input: dense_baseline
+- output: dense
+
+# Overwrite the embedding_dim for all components
+input:
+  embedding_dim: 64
+output:
+  embedding_dim: 64
+intermediate:
+  _target_: napc.model.LSTMModuleFast
+  num_layers: 4
+  embedding_dim: 64
+  input_dim: 64
+  dropout_rate: 0.2
