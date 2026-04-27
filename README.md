@@ -198,9 +198,9 @@ TODO
 
 #### Results
 Accuracy based model selection results (no GRB based model selection has been tested)
-- significantly reduced memory consumption
-- $ACC$ ~ 92.7% $\pm$ 1 (on par with CNN-LSTM, even though the temporal dimension has been downsamples by a factor of 8 and less memory is used)
-- $GRB$ ~ 0.035% $\pm$ 0.8 (better than CNN-LSTM when $ACC$ model selection is used)
+- ~ 50% reduced memory consumption compared to a comparably accurate CNN-mLSTM
+- $ACC$ ~ 92.7% $\pm$ 1 (better than CNN-mLSTM, even though the temporal dimension has been downsamples by a factor of 8)
+- $GRB$ ~ 0.035% $\pm$ 0.8 (better than CNN-mLSTM when $ACC$ model selection is used)
 
 Overall the initial results are very competitive. The method could be investigated in more detail. It could be interesting to apply $GRB$ model selection to this method and to compare it more in detail with the CNN-LSTM.
 
