@@ -645,7 +645,10 @@ class mLSTMModule(nn.Module):
         return x
 
 class BN_NAPC(BaseModel):
-    """NAPC variant that uses a ConvInput encoder before the xLSTM stack."""
+    """
+    BN_NAPC = Bottleneck NAPC. In contrast to NAPC it allows to downsample along the temporal dimension. 
+    The decoder is passed the original sequence length and does upsample back to the original resolution.
+    """
 
     def __init__(
         self,
