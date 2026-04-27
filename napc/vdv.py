@@ -7,7 +7,10 @@ import scipy.stats as stats
 
 def eval_csv(res, alpha=0.05, delta=0.01, percent=True):
 
-    "assumes df with all results"
+    """
+    assumes df with all results
+    computes equivalence test for counting accuracy (see https://www.vdv.de/457-v2.2-sds.pdfx?forced=true p. 73 and following)
+    """
 
     #csv_path = Path(csv_path)
     #res = pd.read_csv(csv_path)#.query("n_frame<=1024")
