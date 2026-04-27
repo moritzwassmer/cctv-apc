@@ -197,7 +197,12 @@ Videos can be very long (up to 2520 frames depending on the dataset). This creat
 TODO
 
 #### Results
-TODO
+Accuracy based model selection results (no GRB based model selection has been tested)
+- significantly reduced memory consumption
+- $ACC$ ~ 92.7% $\pm$ 1 (on par with CNN-LSTM, even though the temporal dimension has been downsamples by a factor of 8 and less memory is used)
+- $GRB$ ~ 0.035% $\pm$ 0.8 (better than CNN-LSTM when $ACC$ model selection is used)
+
+Overall the initial results are very competitive. The method could be investigated in more detail. It could be interesting to apply $GRB$ model selection to this method and to compare it more in detail with the CNN-LSTM.
 
 ## Related Work
 This codebase is largely built upon the methodology of:
