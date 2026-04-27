@@ -161,7 +161,7 @@ $$
 \mathcal{L}^{\theta}_t := \underbrace{\max(0, \hat{y}^{\theta}_t - u^{\theta}_t)}_{\text{overcount}} - \underbrace{\min(0, \hat{y}^{\theta}_t - l^{\theta}_t)}_{\text{undercount}}
 $$
 
-The error for every frame and both heads (a:alighting count, b boarding count)  is averaged.
+The error for every frame and both heads (a:alighting count, b:boarding count)  is averaged.
 
 $$
 \mathcal{L}^* := \frac{1}{2{d_T}} \sum_{t=1}^{d_T} \sum_{\theta\in\{a,b\}} \mathcal{L}^{\theta}_t
@@ -186,6 +186,8 @@ $$
 $$
 
 #### Results
+
+The following are the results of the GRB based model selection. The model has slightly worse $ACC$ (0.3%) than the CNN-vLSTM with the upper and lower bound based loss. However it achieves similar GRB.
 <img width="450" height="200" alt="image" src="https://github.com/user-attachments/assets/d6ae3425-e59a-4cd5-aba6-cc33623b28b1" />
 
 
