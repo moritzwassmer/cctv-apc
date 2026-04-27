@@ -161,7 +161,7 @@ $$
 \mathcal{L}^{\theta}_t := \underbrace{\max(0, \hat{y}^{\theta}_t - u^{\theta}_t)}_{\text{overcount}} - \underbrace{\min(0, \hat{y}^{\theta}_t - l^{\theta}_t)}_{\text{undercount}}
 $$
 
-The error for every frame is averaged.
+The error for every frame and both heads (a:alighting count, b boarding count)  is averaged.
 
 $$
 \mathcal{L}^* := \frac{1}{2{d_T}} \sum_{t=1}^{d_T} \sum_{\theta\in\{a,b\}} \mathcal{L}^{\theta}_t
