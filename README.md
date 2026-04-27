@@ -190,6 +190,14 @@ $$
 The following are the results of the GRB based model selection. The model has slightly worse $ACC$ (0.3%) than the CNN-vLSTM with the upper and lower bound based loss. However it achieves similar GRB.
 <img width="450" height="200" alt="image" src="https://github.com/user-attachments/assets/d6ae3425-e59a-4cd5-aba6-cc33623b28b1" />
 
+### R2+1D-mLSTM-Decoder (Bottleneck Architecture)
+Videos can be very long (up to 2520 frames depending on the dataset). This creates high memory requirements. This model enhances the CNN-LSTM architecture by downsampling the temporal dimension of the videos. The idea is to reduce the temporal dimensions in the CNN encoder, then apply the LSTMs on the downsampled features. Then the decoder applies 1d convolutions and upsamples the features to the original resolution to achieve real-time counting.
+
+#### Architecture
+TODO
+
+#### Results
+TODO
 
 ## Related Work
 This codebase is largely built upon the methodology of:
