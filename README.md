@@ -212,5 +212,7 @@ https://ieeexplore.ieee.org/document/9665722
 The CNN-LSTM architecture and bounding box extend parameter is adopted from:
 S. Seo and K. Obermayer, "CLAPC: A Hybrid CNN-LSTM Architecture for Automated Passenger Counting from Video Streams in Public Transport," in IEEE Open Journal of Intelligent Transportation Systems, 2026, doi: 10.1109/OJITS.2026.3685711.
 
+Thank you Dr. Sambu Seo for providing guidance and for the inital version of the dataset implementation
+
 ## Disclaimer
 Many docstrings in this repository were generated with the assistance of GitHub Copilot and may contain errors. Please refer to the source code as the authoritative reference for implementation details.
